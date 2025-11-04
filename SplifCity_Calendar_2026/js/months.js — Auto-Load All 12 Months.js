@@ -40,32 +40,52 @@ months.forEach((m, i) => {
   monthsContainer.appendChild(section);
 });
 
-// swipe / arrow navigation
-let currentIndex = 1; // cover is index 0
-function showPage(index) {
-  const pages = document.querySelectorAll(".page");
-  pages.forEach((p) => p.classList.remove("active"));
-  pages[index].classList.add("active");
-  currentIndex = index;
+// unified navigation
+let currentIndex = 0; // start with cover page
+
+function getAllPages() {
+  // '.page' covers cover, months, and contact section
+  return document.querySelectorAll(".page");
 }
 
+function showPage(index) {
+  const pages = getAllPages();
+  pages.forEach((p) => p.classList.remove("active"));
+  if (pages[index]) {
+    pages[index].classList.add("active");
+    currentIndex = index;
+  }
+}
+
+// Keyboard navigation
 document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowRight" && currentIndex < months.length)
+  const pages = getAllPages();
+  if (e.key === "ArrowRight" && currentIndex < pages.length - 1)
     showPage(currentIndex + 1);
   if (e.key === "ArrowLeft" && currentIndex > 0)
     showPage(currentIndex - 1);
 });
 
-// simple touch swipe detection
+// Touch swipe detection
 let startX = 0;
 document.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX));
 document.addEventListener("touchend", (e) => {
+  const pages = getAllPages();
   const diff = e.changedTouches[0].clientX - startX;
   if (Math.abs(diff) > 50) {
-    if (diff < 0 && currentIndex < months.length) showPage(currentIndex + 1);
+    if (diff < 0 && currentIndex < pages.length - 1) showPage(currentIndex + 1);
     if (diff > 0 && currentIndex > 0) showPage(currentIndex - 1);
   }
 });
 
-// start with cover active
+// Button: Enter Calendar (cover to first month)
+document.getElementById('enterBtn').onclick = () => showPage(1);
+
+// Button: Contact page nav (if you want to show contact, for example)
+const contactBtn = document.getElementById('contactBtn');
+if(contactBtn) {
+  contactBtn.onclick = () => showPage(getAllPages().length - 1); // last page
+}
+
+// Start with cover page active
 showPage(0);
