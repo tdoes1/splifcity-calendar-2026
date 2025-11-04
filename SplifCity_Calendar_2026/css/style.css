@@ -1,0 +1,37 @@
+.month-title {
+  font-size: 2rem;
+  color: #ccc;
+  text-shadow: 0 0 8px #9b59ff;
+  margin-bottom: 10px;
+}
+
+.month-image {
+  width: 80%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 0 25px #9b59ff66;
+}
+
+.calendar-grid {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.calendar-grid .weekdays {
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.calendar-grid .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  text-align: center;
+}
