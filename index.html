@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splif City: Trippy Series 2026 Calendar</title>
+  <link rel="icon" href="icons/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section id="cover" class="page active">
+    <h1>Splif City – Trippy Series 2026 Calendar</h1>
+    <button id="enterBtn">Enter Calendar</button>
+  </section>
+
+  <section id="months"></section>
+
+  <section id="contact" class="page">
+    <h3>Splif City Apparel & Novelties</h3>
+    <a href="https://www.splifcity.com/online-store/Wall-Art-c32861035" target="_blank">Wall Art</a>
+    <img src="assets/QR.png" alt="QR Code" class="qr-code" />
+    <button id="shareBtn">Share Calendar</button>
+ 
+ </section><div id="reminderModal" class="reminder-modal hidden">
+  <div class="reminder-inner">
+    <h4 id="reminderTitle">Reminder</h4>
+    <textarea id="reminderText" rows="4" placeholder="Type your reminder here..."></textarea>
+    <div class="reminder-buttons">
+      <button id="reminderSave">Save</button>
+      <button id="reminderDelete">Delete</button>
+      <button id="reminderCancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+  <script src="js/script.js"></script>
+  <script src="js/months.js"></script>
+
+  <div class="nav-arrow nav-arrow-left">&#10094;</div>
+  <div class="nav-arrow nav-arrow-right">&#10095;</div>
+</body>
+</html>
