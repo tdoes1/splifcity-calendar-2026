@@ -44,5 +44,19 @@
   <script src="js/script.js"></script>
   <script src="js/months.js"></script>
 
+<script>
+  (function () {
+    const btn = document.getElementById("enterBtn");
+    if (!btn) {
+      console.error('Button with id="enterBtn" was not found.');
+      return;
+    }
+    btn.addEventListener("click", () => {
+      window.location.assign("https://tdoes1.github.io/splifcity-calendar-2026/");
+    });
+  })();
+</script>
+
+
 </body>
 </html>
