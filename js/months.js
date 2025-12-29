@@ -116,7 +116,7 @@ function buildMonths() {
   months.forEach((m, i) => {
     const section = document.createElement("section");
     section.className = "page";
-    section.id = `month-${i}`;   // month-0 = January, month-1 = February, etc.
+    section.id = `month-${i}`; // month-0 = January, month-1 = February, etc.
     section.innerHTML = `
       <h2 class="month-title">${m.name} 2026</h2>
       <img src="assets/${m.img}" alt="${m.name}" class="month-image" />

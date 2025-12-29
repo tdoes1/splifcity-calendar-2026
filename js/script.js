@@ -21,17 +21,20 @@ function initNavigation() {
   showPage(0);
 
   // Enter button → go to first month page (index 1)
-  const enterBtn = document.getElementById('enterBtn');
-  if (enterBtn) {
-    enterBtn.addEventListener('click', () => {
-  const pages = Array.from(document.querySelectorAll('.page'));
-  const jan = document.getElementById('month-0'); // January
-  if (!jan) return;
+const enterBtn = document.getElementById('enterBtn');
+if (enterBtn) {
+  enterBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  const janIndex = pages.indexOf(jan);
-  if (janIndex !== -1) showPage(janIndex);
-});
-  }
+    const pages = Array.from(document.querySelectorAll('.page'));
+    const jan = document.getElementById('month-0');
+    if (!jan) return;
+
+    const janIndex = pages.indexOf(jan);
+    if (janIndex !== -1) showPage(janIndex);
+  }, true);
+}
 
   // Share button → copy URL
   const shareBtn = document.getElementById('shareBtn');
@@ -76,17 +79,35 @@ function initNavigation() {
 
   // Touch swipe
   let startX = 0;
-  document.addEventListener('touchstart', (e) => {
-    if (!e.touches || !e.touches.length) return;
-    startX = e.touches[0].clientX;
-  });
+let startY = 0;
+let ignoreSwipe = false;
 
-  document.addEventListener('touchend', (e) => {
-    if (!e.changedTouches || !e.changedTouches.length) return;
-    const diff = e.changedTouches[0].clientX - startX;
-    if (Math.abs(diff) < 50) return;
+document.addEventListener('touchstart', (e) => {
+  if (!e.touches || !e.touches.length) return;
 
-    if (diff < 0) stepPage(1);    // swipe left → next
-    if (diff > 0) stepPage(-1);   // swipe right → previous
-  });
-}
+  const t = e.target;
+  // Don’t treat taps on interactive elements as swipes
+  ignoreSwipe = !!(t.closest && t.closest('button, a, input, textarea, select, .reminder-inner'));
+
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+  if (ignoreSwipe) return;
+  if (!e.changedTouches || !e.changedTouches.length) return;
+
+  const endX = e.changedTouches[0].clientX;
+  const endY = e.changedTouches[0].clientY;
+
+  const diffX = endX - startX;
+  const diffY = endY - startY;
+
+  // Require a mostly-horizontal swipe
+  if (Math.abs(diffX) < 60) return;
+  if (Math.abs(diffY) > 60) return;
+
+  if (diffX < 0) stepPage(1);
+  if (diffX > 0) stepPage(-1);
+}, { passive: true });
+

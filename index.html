@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splif City: Trippy Series 2026 Calendar</title>
+  <link rel="icon" href="icons/favicon.ico">
+  <link rel="stylesheet" href="css/style.css?v=20251229b">
+</head>
+<body>
+
+  <!-- COVER (shows first) -->
+  <section id="cover" class="page active">
+    <h1 class="cover-title">Splif City: Trippy Series 2026 Calendar</h1>
+
+    <button id="enterBtn">Enter Calendar</button>
+
+    <div class="cover-description">
+      <h2 class="cover-heading">THE TRIPPY EXPERIENCE</h2>
+
+      <p>Step into a different dimension every month.<br>
+      The Splif City Trippy Series 2026 Calendar isn’t just a calendar — it’s a journey.<br>
+      Each page hits with explosive color, hypnotic detail, and mind-bending energy that transforms into a portal.</p>
+
+      <p>Let the artwork shift your mood, elevate your space, and keep your year aligned with purpose and creativity.</p>
+
+      <p>🌀 Fully interactive. Click dates to input reminders<br>
+      🌀 Hand-picked art from the Splif City Trippy Collection<br>
+      🌀 Available in an Interactive Digital Edition<br>
+      🌀 More Splif City information and share button on last page.</p>
+
+      <p><strong>Enter 2026 with a vibe.</strong></p>
+    </div>
+  </section>
+
+<div class="nav-arrow nav-arrow-left" aria-label="Previous">❮</div>
+<div class="nav-arrow nav-arrow-right" aria-label="Next">❯</div>
+
+  <!-- MONTHS (your JS fills this) -->
+  <section id="months"></section>
+
+  <!-- CLOSING PAGE (shows after December) -->
+  <section id="closing" class="page">
+    <h3>Splif City Apparel & Novelties</h3>
+    <a href="https://www.splifcity.com/online-store/" target="_blank">Splif City Merch</a>
+    <a href="https://www.splifcity.com/online-store/Wall-Art-c32861035" target="_blank">Wall Art</a>
+    <img src="assets/QR.png" alt="QR Code">
+    <button id="shareBtn">Share Calendar</button>
+  </section>
+
+  <script src="js/script.js?v=20251229b"></script>
+  <script src="js/months.js?v=20251229b"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("enterBtn");
+      if (btn) {
+        btn.addEventListener("click", () => {
+          window.location.href = "https://tdoes1.github.io/splifcity-calendar-2026/";
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
